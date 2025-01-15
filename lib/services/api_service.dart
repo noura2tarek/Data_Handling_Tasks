@@ -4,7 +4,6 @@ import 'package:data_handling_task1/models/employee_model.dart';
 import 'package:http/http.dart' as http;
 
 class ApiService {
-  //String endPoint = 'https://mocki.io/v1/283ba093-9bf9-42e4-8f28-d2538937f9ca';
   var url = Uri.https('mocki.io', 'v1/283ba093-9bf9-42e4-8f28-d2538937f9ca');
 
   Future<List<EmployeeModel>> getUsersData() async {
