@@ -1,6 +1,8 @@
 import 'package:data_handling_task1/models/employee_model.dart';
 import 'package:flutter/material.dart';
 
+import '../emp_details_screen.dart';
+
 class CustomListTile extends StatelessWidget {
   const CustomListTile({super.key, required this.user});
 
@@ -9,15 +11,23 @@ class CustomListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      focusColor: Colors.purpleAccent,
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => EmployeeDetailsScreen(
+            employee: user,
+          ),
+        ));
+      },
+      //focusColor: Colors.purpleAccent,
       tileColor: Colors.grey.shade200,
+      splashColor: Colors.grey.shade300,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(5.0),
       ),
       leading: CircleAvatar(
         radius: 20.0,
         backgroundImage: NetworkImage(user.imageUrl ?? ""),
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Colors.green,
       ),
       title: Text('${user.firstName} ${user.lastName}'),
       subtitle: Text(
@@ -28,7 +38,7 @@ class CustomListTile extends StatelessWidget {
         '${user.salary.toString()}\$',
         style: TextStyle(
           fontSize: 15.0,
-          color: Colors.blueAccent,
+          color: Colors.green,
         ),
       ),
     );

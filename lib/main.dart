@@ -9,6 +9,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   HttpOverrides.global = MyHttpOverrides();
   await CacheHelper.init();
+  CacheHelper.sharedPreferences?.clear();
   runApp(const MyApp());
 }
 

@@ -5,6 +5,7 @@ class EmployeeModel {
   String? lastName;
   String? email;
   String? contactNumber;
+  String? dataOfBirth;
   int? age;
   int? salary;
   String? address;
@@ -18,6 +19,7 @@ class EmployeeModel {
       this.contactNumber,
       this.age,
       this.salary,
+      this.dataOfBirth,
       this.address});
 
   EmployeeModel.fromJson(Map<String, dynamic> json) {
@@ -30,5 +32,6 @@ class EmployeeModel {
     age = json['age'];
     salary = json['salary'];
     address = json['address'];
+    dataOfBirth = json['dob'];
   }
 }

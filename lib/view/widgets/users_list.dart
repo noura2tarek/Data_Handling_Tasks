@@ -18,7 +18,9 @@ class UsersList extends StatelessWidget {
       itemCount: users.length,
       itemBuilder: (context, index) {
         EmployeeModel user = users[index];
-        return CustomListTile(user: user);
+        return CustomListTile(
+          user: user,
+        );
       },
       separatorBuilder: (context, index) => SizedBox(
         height: 8.0,

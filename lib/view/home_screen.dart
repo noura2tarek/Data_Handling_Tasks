@@ -1,12 +1,10 @@
 import 'dart:convert';
-
 import 'package:data_handling_task1/core/app_strings.dart';
 import 'package:data_handling_task1/models/employee_model.dart';
 import 'package:data_handling_task1/services/api_service.dart';
 import 'package:data_handling_task1/view/widgets/start_button.dart';
 import 'package:data_handling_task1/view/widgets/users_list.dart';
 import 'package:flutter/material.dart';
-
 import '../services/shared_pref.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -57,12 +55,13 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 1.0,
         title: Text(
           AppStrings.employeeData,
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500),
         ),
         centerTitle: true,
-        backgroundColor: Colors.black45,
+        //backgroundColor: Colors.black45,
       ),
       body: isLoading
           ? Center(
