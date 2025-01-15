@@ -17,6 +17,7 @@ class CustomListTile extends StatelessWidget {
       leading: CircleAvatar(
         radius: 20.0,
         backgroundImage: NetworkImage(user.imageUrl ?? ""),
+        backgroundColor: Colors.blueAccent,
       ),
       title: Text('${user.firstName} ${user.lastName}'),
       subtitle: Text(

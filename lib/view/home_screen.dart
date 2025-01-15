@@ -1,9 +1,13 @@
+import 'dart:convert';
+
 import 'package:data_handling_task1/core/app_strings.dart';
 import 'package:data_handling_task1/models/employee_model.dart';
 import 'package:data_handling_task1/services/api_service.dart';
 import 'package:data_handling_task1/view/widgets/start_button.dart';
 import 'package:data_handling_task1/view/widgets/users_list.dart';
 import 'package:flutter/material.dart';
+
+import '../services/shared_pref.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -25,6 +29,30 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {});
   }
 
+  late String cachedList;
+
+  /*--- Get cached employees data if exists (method) ---*/
+
+  getCachedData() async {
+    cachedList = await (CacheHelper.getData(key: 'employeesList')) ?? "";
+    // Decode the cached string and returns the resulting Json object.
+    if (cachedList.isNotEmpty) {
+      print("There is data in the cache");
+      var jsonData = jsonDecode(cachedList);
+      jsonData.forEach((user) {
+        users.add(EmployeeModel.fromJson(user));
+      });
+    }
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    cachedList = '';
+    getCachedData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,9 +66,9 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: isLoading
           ? Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(color: Colors.blueAccent),
             )
-          : users.isEmpty
+          : users.isEmpty && cachedList.isEmpty
               ? Align(
                   alignment: Alignment.center,
                   child: StartButton(

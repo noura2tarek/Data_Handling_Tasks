@@ -1,20 +1,21 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:data_handling_task1/models/employee_model.dart';
-import 'package:http/http.dart' as http;
+import 'package:data_handling_task1/services/shared_pref.dart';
+import 'package:dio/dio.dart';
 
 class ApiService {
-  var url = Uri.https('mocki.io', 'v1/283ba093-9bf9-42e4-8f28-d2538937f9ca');
+  String endPoint = 'https://mocki.io/v1/283ba093-9bf9-42e4-8f28-d2538937f9ca';
+  Dio dio = Dio();
 
   Future<List<EmployeeModel>> getUsersData() async {
     List<EmployeeModel> users = [];
 
     try {
-      var response = await http.get(url);
-      var body = response.body;
-      // use json decode method to convert the string body
-      // and returns the resulting Json object.
-      var data = jsonDecode(body);
+      var response = await dio.get(endPoint);
+      var data = response.data;
+      String dataString = jsonEncode(data);
+      CacheHelper.saveData(key: 'employeesList', value: dataString);
       if (response.statusCode == 200) {
         data.forEach((user) {
           users.add(EmployeeModel.fromJson(user));
