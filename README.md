@@ -7,7 +7,7 @@ Fetch employee data using HTTP then Parse JSON responses and map them to model.
 
 1- I use http package to send http requests.     
 2- The api in the task has an error so, i use this:  
-link: 'https://mocki.io/v1/283ba093-9bf9-42e4-8f28-d2538937f9ca' 
+link: 'https://mocki.io/v1/283ba093-9bf9-42e4-8f28-d2538937f9ca' .   
 3- I use dart:convert package to to decode the response body.   
 4- Then, i parse the json data and map it to employee model.   
 5- The service method returns the users list.   
