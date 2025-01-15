@@ -13,7 +13,7 @@ link: 'https://mocki.io/v1/283ba093-9bf9-42e4-8f28-d2538937f9ca' .
 5- The service method returns the users list.   
 6- I use the users list to build the UI but,    
 first i'm calling the service method in the start
-button.
+button.           
 7- After loading the data and the list is ready, i'm calling the setState method to update the UI.    
 8- In the start of the application, the start button is appeared to get data, after the list is
 loaded, this button is removed.  
