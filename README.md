@@ -18,8 +18,8 @@ link: 'https://mocki.io/v1/283ba093-9bf9-42e4-8f28-d2538937f9ca' .
 This api link don't have any employee position as required.
 
 2- I use shared preferences to cache the employees list locally.                   
-by saving the response as string and then reading it from shared preferences and convert it to json
-again to apply modeling.              
+by saving the json response as string using jsonEncode method and then reading it from shared preferences and convert it to json
+again using jsonDecode method to apply modeling.              
 3- The cached employee list is saved in 'employeesList' key and loaded on the app start.        
 4- I put the sharedPreferences static variable and its methods in shared_pref.dart with CacheHelper
 class (in services).
