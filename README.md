@@ -17,12 +17,12 @@ The model and api service are the same of task1 but using dio package.
 link: 'https://mocki.io/v1/283ba093-9bf9-42e4-8f28-d2538937f9ca' .   
 This api link don't have any employee position as required.
 
-2- I use shared preferences to cache the employees list locally.
+2- I use shared preferences to cache the employees list locally.                   
 by saving the response as string and then reading it from shared preferences and convert it to json
-again to apply modeling.
-3- The cached employee list is saved in 'employeesList' key and loaded on the app start.
-3- Loading indicator added while the data is loaded when clicking to the 'click to get data' button.
-4- Employee profile screen added to show more details of the employee and manage navigation between
+again to apply modeling.              
+3- The cached employee list is saved in 'employeesList' key and loaded on the app start.        
+4- Loading indicator added while the data is loaded when clicking to the 'click to get data' button.               
+5- Employee profile screen added to show more details of the employee and manage navigation between
 screens.              
   
 The output images in assets/images folder.     
