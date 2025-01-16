@@ -27,6 +27,7 @@ The employee model is in models folder.
 The api service is in services folder.    
 The screens and widgets is in view folder.
 
-Note:---------------------------------------------------
+Note:
+---------------------------------------------------
 The task2 in the same repo in branch employee_details(T2). 
 
