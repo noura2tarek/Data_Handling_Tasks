@@ -6,7 +6,7 @@ import 'package:data_handling_task1/view/widgets/custom_app_bar.dart';
 import 'package:data_handling_task1/view/widgets/start_button.dart';
 import 'package:data_handling_task1/view/widgets/users_list.dart';
 import 'package:flutter/material.dart';
-import '../services/shared_pref.dart';
+import '../main.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List<EmployeeModel> users = [];
   bool isLoading = false;
 
-  /*--- Get employees data method ---*/
+  /*--- Get employees data from API method ---*/
   getData() async {
     isLoading = true;
     setState(() {});
@@ -28,29 +28,25 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {});
   }
 
-  late String cachedList;
-
-  /*--- Get cached employees data if exists (method) ---*/
-
-  getCachedData() async {
-    cachedList = await (CacheHelper.getData(key: 'employeesList')) ?? "";
-    // Decode the cached string and returns the resulting Json object.
+  /*--- Get cached employees data if exists method (from main file) ---*/
+  getCachedData() {
     if (cachedList.isNotEmpty) {
       print("There is data in the cache");
+      // Decode the cached string and returns the resulting Json object.
       var jsonData = jsonDecode(cachedList);
       jsonData.forEach((user) {
         users.add(EmployeeModel.fromJson(user));
       });
+      setState(() {});
     }
-    setState(() {});
   }
 
   @override
   void initState() {
-    cachedList = '';
     getCachedData();
     super.initState();
   }
+
   ////////////////////
   @override
   Widget build(BuildContext context) {

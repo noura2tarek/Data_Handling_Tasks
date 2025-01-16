@@ -20,13 +20,14 @@ This api link don't have any employee position as required.
 2- I use shared preferences to cache the employees list locally.
 by saving the response as string and then reading it from shared preferences and convert it to json
 again to apply modeling.
+3- The cached employee list is saved in 'employeesList' key and loaded on the app start.
 3- Loading indicator added while the data is loaded when clicking to the 'click to get data' button.
 4- Employee profile screen added to show more details of the employee and manage navigation between
 screens.
-
-The output images in assets/images folder.    
-I use the structure of models - services - view.   
-The employee model is in models folder.    
-The api service is in services folder.    
-The screens and widgets is in view folder.    
+  
+The output images in assets/images folder.     
+I use the structure of models - services - view.    
+The employee model is in models folder.      
+The api service is in services folder.      
+The screens and widgets is in view folder.     
 
