@@ -15,7 +15,7 @@ The model and api service are the same of task1 but using dio package.
 
 1- The api in the task has an error so, i use this:  
 link: 'https://mocki.io/v1/283ba093-9bf9-42e4-8f28-d2538937f9ca' .   
-This api link don't have any employee position as required.
+This api link doesn't have any employee position as required.
 
 2- I use shared preferences to cache the employees list locally.                   
 by saving the json response as string using jsonEncode method and then reading it from shared preferences and convert it to json
