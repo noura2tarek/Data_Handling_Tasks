@@ -1,25 +1,22 @@
+import 'package:data_handling_task1/core/app_strings.dart';
 import 'package:data_handling_task1/models/employee_model.dart';
+import 'package:data_handling_task1/view/widgets/custom_app_bar.dart';
+import 'package:data_handling_task1/view/widgets/custom_details_text.dart';
+import 'package:data_handling_task1/view/widgets/details_column.dart';
 import 'package:flutter/material.dart';
 
 class EmployeeDetailsScreen extends StatelessWidget {
   const EmployeeDetailsScreen({super.key, required this.employee});
 
+  // The received employee data object
   final EmployeeModel employee;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 1.0,
-        title: Text(
-          'User Profile',
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500),
-        ),
-        centerTitle: true,
-        //backgroundColor: Colors.black45,
-        iconTheme: IconThemeData(
-          color: Colors.black,
-        ),
+      appBar: CustomAppBar(
+        title: AppStrings.userProfile,
+        leadingVisibility: true,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 26.0),
@@ -29,6 +26,7 @@ class EmployeeDetailsScreen extends StatelessWidget {
             SizedBox(
               height: 25.0,
             ),
+            //---- User image ----//
             Center(
               child: CircleAvatar(
                 radius: 50.0,
@@ -39,37 +37,30 @@ class EmployeeDetailsScreen extends StatelessWidget {
             SizedBox(
               height: 15.0,
             ),
-            // User name
+            //---- User name ----//
             Center(
               child: Text(
                 '${employee.firstName} ${employee.lastName}',
                 style: TextStyle(
-                  fontSize: 20.0,
+                  fontSize: 22.0,
                   fontWeight: FontWeight.w600,
                   color: Colors.black,
                 ),
               ),
             ),
-            // user email
+            //---- User email ----//
             Center(
-              child: Text(
-                '${employee.email}',
-                style: TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.black54,
-                ),
+              child: CustomDetailsText(
+                text: employee.email ?? "",
+                fontSize: 14.0,
               ),
             ),
-            // user phone
+            //---- User phone ----//
             Center(
-              child: Text(
-                '+${employee.contactNumber}',
-                style: TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.black54,
-                ),
+              child: CustomDetailsText(
+                text: employee.contactNumber ?? "",
+                isPhone: true,
+                fontSize: 14.0,
               ),
             ),
             const Divider(
@@ -78,119 +69,29 @@ class EmployeeDetailsScreen extends StatelessWidget {
             SizedBox(
               height: 20.0,
             ),
-            Row(
-              children: [
-                Icon(Icons.monetization_on_outlined),
-                SizedBox(width: 2),
-                Text(
-                  'Salary',
-                  style: TextStyle(
-                    fontSize: 17.0,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ],
+            // Salary text and icon column
+            DetailsColumn(
+              title: AppStrings.salary,
+              value: '${employee.salary}\$',
+              icon: Icons.monetization_on_outlined,
             ),
-            SizedBox(
-              height: 6.0,
+            // Age text and icon column
+            DetailsColumn(
+              title: AppStrings.age,
+              icon: Icons.numbers_outlined,
+              value: '${employee.age}',
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10.0),
-              child: Text(
-                '${employee.salary}\$',
-                style: TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.black54,
-                ),
-              ),
+            // Date of birth text and icon column
+            DetailsColumn(
+              title: AppStrings.dateOfBirth,
+              icon: Icons.calendar_month_outlined,
+              value: '${employee.dataOfBirth}',
             ),
-            SizedBox(
-              height: 8.0,
-            ),
-            Row(
-              children: [
-                Icon(Icons.numbers_outlined),
-                Text(
-                  'Age',
-                  style: TextStyle(
-                    fontSize: 17.0,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 6.0,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10.0),
-              child: Text(
-                '${employee.age}',
-                style: TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.black54,
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 8.0,
-            ),
-            Row(
-              children: [
-                Icon(Icons.calendar_month_outlined),
-                Text(
-                  'Date of birth',
-                  style: TextStyle(
-                    fontSize: 17.0,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 6.0,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10.0),
-              child: Text(
-                '${employee.dataOfBirth}',
-                style: TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.black54,
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 8.0,
-            ),
-            Row(
-              children: [
-                Icon(Icons.location_on_outlined),
-                Text(
-                  'Address',
-                  style: TextStyle(
-                    fontSize: 17.0,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 6.0,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10.0),
-              child: Text(
-                '${employee.address}',
-                style: TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.black54,
-                ),
-              ),
+            // Address text and icon column
+            DetailsColumn(
+              title: AppStrings.address,
+              icon: Icons.location_on_outlined,
+              value: '${employee.address}',
             ),
           ],
         ),
@@ -198,3 +99,4 @@ class EmployeeDetailsScreen extends StatelessWidget {
     );
   }
 }
+/////////////////////////////////////

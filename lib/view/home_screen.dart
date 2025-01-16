@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:data_handling_task1/core/app_strings.dart';
 import 'package:data_handling_task1/models/employee_model.dart';
 import 'package:data_handling_task1/services/api_service.dart';
+import 'package:data_handling_task1/view/widgets/custom_app_bar.dart';
 import 'package:data_handling_task1/view/widgets/start_button.dart';
 import 'package:data_handling_task1/view/widgets/users_list.dart';
 import 'package:flutter/material.dart';
@@ -50,18 +51,13 @@ class _HomeScreenState extends State<HomeScreen> {
     getCachedData();
     super.initState();
   }
-
+  ////////////////////
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 1.0,
-        title: Text(
-          AppStrings.employeeData,
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500),
-        ),
-        centerTitle: true,
-        //backgroundColor: Colors.black45,
+      appBar: CustomAppBar(
+        title: AppStrings.employeeData,
+        leadingVisibility: false,
       ),
       body: isLoading
           ? Center(

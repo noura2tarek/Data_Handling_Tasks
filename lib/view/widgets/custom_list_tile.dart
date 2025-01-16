@@ -1,6 +1,5 @@
 import 'package:data_handling_task1/models/employee_model.dart';
 import 'package:flutter/material.dart';
-
 import '../emp_details_screen.dart';
 
 class CustomListTile extends StatelessWidget {
@@ -12,6 +11,7 @@ class CustomListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {
+        // nav to emp details screen
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => EmployeeDetailsScreen(
             employee: user,
