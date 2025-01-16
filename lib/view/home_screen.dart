@@ -29,16 +29,16 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 1.0,
         title: Text(
           AppStrings.employeeData,
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500),
         ),
         centerTitle: true,
-        backgroundColor: Colors.black45,
       ),
       body: isLoading
           ? Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(color: Colors.blueAccent,),
             )
           : users.isEmpty
               ? Align(
