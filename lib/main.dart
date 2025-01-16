@@ -10,8 +10,9 @@ String cachedList = '';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   HttpOverrides.global = MyHttpOverrides();
+  // Initialize shared preference
   await CacheHelper.init();
-  // load cached data if exist
+  // Load cached data if exist
   cachedList = await (CacheHelper.getData(key: 'employeesList')) ?? "";
   runApp(const MyApp());
 }
