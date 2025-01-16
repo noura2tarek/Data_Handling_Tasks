@@ -19,13 +19,14 @@ This api link doesn't have any employee position as required.
 
 2- I use shared preferences to cache the employees list locally.                   
 by saving the json response as string using jsonEncode method and then reading it from shared preferences and convert it to json
-again using jsonDecode method to apply modeling.              
-3- The cached employee list is saved in 'employeesList' key and loaded on the app start.        
-4- I put the sharedPreferences static variable and its methods in shared_pref.dart with CacheHelper
+again using jsonDecode method to apply modeling. 
+3- I use dart:convert package to to decode or encode the response data.       
+4- The cached employee list is saved in 'employeesList' key and loaded on the app start.        
+5- I put the sharedPreferences static variable and its methods in shared_pref.dart with CacheHelper
 class (in services).
-5- Loading indicator added while the data is loaded when clicking to the 'click to get data'
+6- Loading indicator added while the data is loaded when clicking to the 'click to get data'
 button.               
-6- Employee profile screen added to show more details of the employee and manage navigation between
+7- Employee profile screen added to show more details of the employee and manage navigation between
 screens.
 
 The output images in assets/images folder.     
